@@ -1,0 +1,246 @@
+/* ==========================================================================
+   COMPONENTS
+   Small, reusable visual "things" — buttons, badges, cards — that get
+   assembled into the page layouts. Each one is written to work on its
+   own, independent of which page it's dropped into.
+   ========================================================================== */
+
+/* --- Buttons ---------------------------------------------------------------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xs);
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9375rem;
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast),
+    color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn--primary {
+  background: var(--color-teal);
+  color: var(--color-canvas);
+}
+
+.btn--primary:hover {
+  background: var(--color-teal-dark);
+}
+
+.btn--secondary {
+  background: transparent;
+  border-color: var(--color-border-strong);
+  color: var(--color-ink);
+}
+
+.btn--secondary:hover {
+  border-color: var(--color-ink);
+}
+
+/* --- Badges ------------------------------------------------------------------ */
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-sm);
+  background: var(--color-teal-tint);
+  color: var(--color-teal-dark);
+}
+
+.badge--spotlight {
+  background: var(--color-violet-tint);
+  color: var(--color-violet);
+}
+
+/* --- Cards -------------------------------------------------------------------- */
+
+.card {
+  display: block;
+  height: 100%;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-canvas);
+  transition: border-color var(--transition-base), transform var(--transition-base);
+}
+
+a.card:hover,
+a.card:focus-visible {
+  border-color: var(--color-border-strong);
+  transform: translateY(-2px);
+}
+
+.card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xs);
+}
+
+.card__title {
+  font-size: var(--font-size-h3);
+}
+
+.card__description {
+  color: var(--color-slate);
+  margin-bottom: var(--space-sm);
+}
+
+.card__cta {
+  font-size: 0.9375rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-teal);
+}
+
+a.card:hover .card__cta {
+  color: var(--color-teal-dark);
+}
+
+/* --- Section intro block (used above card grids) ------------------------------- */
+
+.section-intro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+/* --- Callout box ------------------------------------------------------------
+   Used once per case study to flag the single standout finding — this is
+   the one place the violet "spotlight" accent appears, by design. */
+
+.callout {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  background: var(--color-violet-tint);
+  border-left: 3px solid var(--color-violet);
+  margin-block: var(--space-md);
+}
+
+.callout__label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-violet);
+  margin-bottom: var(--space-3xs);
+}
+
+/* --- Case study meta list -----------------------------------------------------
+   A small label/value list used at the top of each case study page (role,
+   tools, timeframe) — kept in its own component so it's reusable. */
+
+.meta-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-md);
+  padding-block: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.meta-list dt {
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-slate-muted);
+  margin-bottom: var(--space-3xs);
+}
+
+.meta-list dd {
+  font-size: 0.9375rem;
+  color: var(--color-ink);
+}
+
+/* --- Limitation / status notice ------------------------------------------------
+   A quiet, honest flag for known limitations — deliberately understated,
+   not styled like an error or warning. */
+
+.notice {
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  color: var(--color-slate);
+  margin-block: var(--space-md);
+}
+
+.notice strong {
+  color: var(--color-ink);
+}
+
+/* --- Prose images ----------------------------------------------------------------
+   Case study screenshots dropped inline in long-form content. */
+
+.prose figure {
+  margin-block: var(--space-lg);
+}
+
+.prose figure img {
+  width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.prose figcaption {
+  font-size: 0.875rem;
+  color: var(--color-slate-muted);
+  margin-top: var(--space-2xs);
+  text-align: center;
+}
+
+/* --- Two-column layout (About page) --------------------------------------------- */
+
+.split {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: var(--space-xl);
+  align-items: start;
+}
+
+.split img {
+  width: 100%;
+  border-radius: var(--radius-lg);
+}
+
+@media (max-width: 719px) {
+  .split {
+    grid-template-columns: 1fr;
+  }
+
+  .split img {
+    max-width: 200px;
+    margin-inline: auto;
+  }
+}
+
+/* --- Skill group list (About page) ------------------------------------------------ */
+
+.skill-group + .skill-group {
+  margin-top: var(--space-md);
+}
+
+.skill-group__title {
+  font-size: 0.9375rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-ink);
+  margin-bottom: var(--space-2xs);
+}
+
+.skill-group__list {
+  color: var(--color-slate);
+  line-height: var(--line-height-relaxed);
+}
