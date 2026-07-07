@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Hospital Patient Dashboard (Excel) — Marian Ohwerhi</title>
+  <meta name="description" content="An Excel dashboard analysing 400 hospital patient records — pivot tables, calculated fields, and slicer-driven KPI reporting." />
+  <meta name="author" content="Marian Ohwerhi" />
+  <link rel="canonical" href="https://marianohwerhi.github.io/case-studies/hospital-patient-dashboard.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Hospital Patient Dashboard (Excel)" />
+  <meta property="og:description" content="400 patient records cleaned and modelled into an interactive Excel dashboard." />
+  <meta property="og:url" content="https://marianohwerhi.github.io/case-studies/hospital-patient-dashboard.html" />
+  <meta property="og:image" content="https://marianohwerhi.github.io/assets/images/social-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16.png" />
+  <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/variables.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="nav__logo" href="../index.html">Marian Ohwerhi</a>
+      <div class="nav__links" id="nav-links">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="../index.html">Home</a></li>
+          <li><a class="nav__link" href="../work.html" aria-current="page">Work</a></li>
+          <li><a class="nav__link" href="../about.html">About</a></li>
+          <li><a class="nav__link" href="../insights.html">Insights</a></li>
+          <li><a class="nav__link" href="../contact.html">Contact</a></li>
+        </ul>
+        <a class="btn btn--secondary nav__resume" href="https://www.linkedin.com/in/marian-ohwerhi/">Résumé</a>
+      </div>
+      <button class="nav__toggle" id="nav-toggle" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Open menu">
+        <span class="nav__toggle-icon"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <article class="section section--tight">
+      <div class="container container--narrow">
+        <p><a class="prose" href="../work.html" style="color: var(--color-teal); text-decoration: underline;">← Back to Work</a></p>
+        <span class="section__eyebrow" style="margin-top: var(--space-md);">Excel · Healthcare analytics</span>
+        <h1>Hospital patient dashboard</h1>
+        <p class="prose" style="font-size: var(--font-size-body-lg); margin-top: var(--space-sm);">
+          An earlier, smaller project than the HIV analysis: 400 hospital patient records cleaned
+          and modelled in Excel into an interactive dashboard tracking recovery, cost, and
+          department performance.
+        </p>
+
+        <dl class="meta-list">
+          <div><dt>Tools</dt><dd>Excel, pivot tables</dd></div>
+          <div><dt>Records</dt><dd>400 patients</dd></div>
+          <div><dt>Departments</dt><dd>7</dd></div>
+          <div><dt>Status</dt><dd>In progress</dd></div>
+        </dl>
+
+        <div class="notice">
+          <strong>Known limitation:</strong> the dashboard sheet inside the source workbook was
+          affected by an autosave issue after the original build — the pivot tables and source
+          data are intact, but the dashboard itself needs to be rebuilt from them. The screenshot
+          and findings below reflect the completed dashboard as it was originally built and
+          presented. I'm disclosing this rather than presenting the screenshot as if the file were
+          fully live — see the rebuild plan in the
+          <a href="https://github.com/marianohwerhi/hospital-patient-dashboard-excel">GitHub repository</a>.
+        </div>
+      </div>
+    </article>
+
+    <article class="section section--alt section--tight">
+      <div class="container container--narrow prose">
+        <h2>The business problem</h2>
+        <p>
+          Green Valley Medical Center (a fictional hospital used as the project brief) handles
+          large volumes of patient information daily — demographics, treatment details, hospital
+          stay length, cost, and recovery outcomes — stored in raw tables that were difficult to
+          interpret quickly. Without visualisation, administrators struggled to monitor department
+          performance and treatment effectiveness or make fast, data-driven decisions.
+        </p>
+
+        <h2>The approach</h2>
+        <p>
+          400 patient records — department, treatment type, doctor, age, gender, treatment cost,
+          hospital stay, and recovery score — checked for duplicates, blanks, and missing values
+          (none found). I added two calculated fields not present in the raw data, <strong>age
+          group</strong> and <strong>cost category</strong>, to make department and demographic
+          comparisons meaningful rather than working from raw ages and cost figures directly. On
+          top of that I built pivot tables summarising recovery, cost, and stay length by
+          department, doctor, treatment type, and gender, then an interactive dashboard with
+          slicers for each.
+        </p>
+        <figure>
+          <img src="../assets/images/projects/hospital-dashboard.jpg" alt="Green Valley Medical Center dashboard showing KPI cards and charts for recovery score, treatment cost, and patient distribution" loading="lazy" width="987" height="585" />
+          <figcaption>The completed dashboard, as presented.</figcaption>
+        </figure>
+
+        <h2>Key findings</h2>
+        <ul style="padding-left: 1.25rem; list-style: disc; color: var(--color-slate);">
+          <li>Recovery score varied by department, ranging from roughly 71 to 77 across the seven departments tracked.</li>
+          <li>Longer hospital stays were more often associated with more complex, higher-cost cases.</li>
+          <li>Patients receiving surgery or therapy showed marginally higher average recovery scores than those under observation alone.</li>
+          <li>Putting the same data behind an interactive dashboard — rather than a static table — made department-level and doctor-level patterns visible in a way the raw spreadsheet didn't surface on its own.</li>
+        </ul>
+
+        <h2>Recommendations</h2>
+        <ul style="padding-left: 1.25rem; list-style: disc; color: var(--color-slate);">
+          <li>Continue using dashboards, not raw tables, for ongoing performance monitoring.</li>
+          <li>Prioritise resource planning for departments showing higher treatment costs.</li>
+          <li>Use recovery trends by treatment type to inform care strategy discussions.</li>
+          <li>Longer term: connect the dashboard to a live hospital data source instead of a static export, to support real-time reporting.</li>
+        </ul>
+
+        <h2>Why this project is included despite the limitation</h2>
+        <p>
+          Disclosing a real limitation, with a concrete plan to fix it, is a more accurate
+          representation of actual analytics work than only ever showing finished, frictionless
+          output. This was also an earlier project than the HIV analysis — keeping it visible
+          shows the progression from Excel fundamentals to a full Power BI star-schema model.
+        </p>
+
+        <p style="margin-top: var(--space-lg);">
+          <a href="https://github.com/marianohwerhi/hospital-patient-dashboard-excel">View the full project on GitHub →</a>
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <p class="footer__copyright">© <span id="current-year">2026</span> Marian Ohwerhi. Built from scratch with HTML, CSS and JavaScript.</p>
+      <ul class="footer__links">
+        <li><a class="nav__link" href="mailto:oriskevwe02@gmail.com">Email</a></li>
+        <li><a class="nav__link" href="https://www.linkedin.com/in/marian-ohwerhi/">LinkedIn</a></li>
+        <li><a class="nav__link" href="https://github.com/marianohwerhi">GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js" defer></script>
+</body>
+</html>
