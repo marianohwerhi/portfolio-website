@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+       PRIMARY SEO
+       Title and description are the two things that show up in a
+       Google search result — kept specific to role + tools rather
+       than generic, since that's what a recruiter actually searches.
+       ============================================================ -->
+  <title>Marian Ohwerhi — Healthcare Data Analyst &amp; Registered Mental Health Nurse</title>
+  <meta
+    name="description"
+    content="Healthcare data analyst and Registered Mental Health Nurse building Power BI, SQL and Excel dashboards for clinical and operational decision-making. Based in the UK."
+  />
+  <meta name="author" content="Marian Ohwerhi" />
+  <link rel="canonical" href="https://marianohwerhi.github.io/" />
+
+  <!-- ============================================================
+       OPEN GRAPH / SOCIAL SHARING
+       Controls how the page looks when the link is shared on
+       LinkedIn, Slack, WhatsApp, etc. — important because that's
+       exactly how a recruiter is likely to pass this link around.
+       ============================================================ -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Marian Ohwerhi — Healthcare Data Analyst & Registered Mental Health Nurse" />
+  <meta
+    property="og:description"
+    content="Power BI, SQL and Excel dashboards for clinical and operational decision-making, built by a nurse who understands the data at the bedside."
+  />
+  <meta property="og:url" content="https://marianohwerhi.github.io/" />
+  <meta property="og:image" content="https://marianohwerhi.github.io/assets/images/social-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicon: SVG is the primary format (crisp at any size); PNG fallbacks
+       cover browsers that don't yet support SVG favicons, and the
+       apple-touch-icon covers "Add to Home Screen" on iOS. -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png" />
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
+
+  <!-- ============================================================
+       FONTS
+       Preconnect shaves a round trip off the font request. Inter is
+       loaded at only the two weights actually used (400 and 500,
+       plus 600 for the nav logo) — every unused weight is wasted
+       bytes on every single page load.
+       ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- ============================================================
+       STYLES
+       Loaded in dependency order: design tokens first, then the
+       reset/base styles that use them, then layout, then components.
+       ============================================================ -->
+  <link rel="stylesheet" href="assets/css/variables.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+
+  <!-- ============================================================
+       STRUCTURED DATA (JSON-LD)
+       Tells Google explicitly "this page is about a Person with
+       this job and these skills" — improves how the site can show
+       up in search rather than relying on Google to guess from the
+       visible text alone.
+       ============================================================ -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Marian Ohwerhi",
+      "jobTitle": "Healthcare Data Analyst",
+      "description": "Healthcare Data Analyst and Registered Mental Health Nurse specialising in Power BI, SQL and Excel dashboards for clinical and operational decision-making.",
+      "url": "https://marianohwerhi.github.io/",
+      "sameAs": ["https://www.linkedin.com/in/marian-ohwerhi/"],
+      "knowsAbout": ["Power BI", "SQL", "Tableau", "Microsoft Excel", "Healthcare data analysis", "Data visualisation"]
+    }
+  </script>
+</head>
+<body>
+  <!-- Skip link: the first focusable element on the page for keyboard
+       users, letting them bypass the navigation entirely. Visually
+       hidden until it receives focus — see .skip-link in base.css. -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="nav__logo" href="index.html">Marian Ohwerhi</a>
+
+      <div class="nav__links" id="nav-links">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="index.html" aria-current="page">Home</a></li>
+          <li><a class="nav__link" href="work.html">Work</a></li>
+          <li><a class="nav__link" href="about.html">About</a></li>
+          <li><a class="nav__link" href="insights.html">Insights</a></li>
+          <li><a class="nav__link" href="contact.html">Contact</a></li>
+        </ul>
+        <!-- TODO: swap this href to assets/documents/resume.pdf once the
+             finalised CV (aligned with LinkedIn per our earlier review) is
+             added to the repository. Points to LinkedIn in the meantime so
+             the button is never a dead link. -->
+        <a class="btn btn--secondary nav__resume" href="https://www.linkedin.com/in/marian-ohwerhi/">Résumé</a>
+      </div>
+
+      <!-- Hamburger toggle, only visible below 720px (see layout.css).
+           aria-controls / aria-expanded keep screen readers informed
+           of what this button does and its current state. -->
+      <button
+        class="nav__toggle"
+        id="nav-toggle"
+        type="button"
+        aria-controls="nav-links"
+        aria-expanded="false"
+        aria-label="Open menu"
+      >
+        <span class="nav__toggle-icon"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ============================================================
+         HERO
+         The single job of this section: in ten seconds, tell a
+         recruiter who this is, what they do, and where to click.
+         ============================================================ -->
+    <section class="hero container">
+      <span class="hero__eyebrow">Healthcare Data Analyst · RMN</span>
+      <h1 class="hero__title">I turn clinical and operational data into decisions that protect patients.</h1>
+      <p class="hero__subtitle">
+        Registered Mental Health Nurse and Power BI / SQL analyst, building dashboards that hold up
+        to how healthcare data actually works.
+      </p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="work.html">View case studies</a>
+        <a class="btn btn--secondary" href="https://www.linkedin.com/in/marian-ohwerhi/">Download CV</a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         RESULTS STRIP
+         Three concrete, verifiable numbers rather than inflated
+         claims — every figure here traces directly back to a real
+         project reviewed before this site was built.
+         ============================================================ -->
+    <section class="container" aria-label="Key figures">
+      <div class="stats">
+        <div class="stat">
+          <span class="stat__value">3</span>
+          <span class="stat__label">End-to-end dashboards</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value">9,763</span>
+          <span class="stat__label">Records modelled in the HIV analysis</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value">2+</span>
+          <span class="stat__label">Years of frontline NHS clinical experience</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FEATURED WORK
+         Two project previews. Both link to the Work hub for now —
+         once the dedicated case study pages exist (next milestone)
+         these hrefs will point straight to them.
+         ============================================================ -->
+    <section class="section" aria-labelledby="work-heading">
+      <div class="container">
+        <div class="section-intro section__heading">
+          <div>
+            <span class="section__eyebrow">Selected work</span>
+            <h2 id="work-heading">Two projects, two different tools</h2>
+          </div>
+          <a class="card__cta" href="work.html">See all work →</a>
+        </div>
+
+        <div class="card-grid">
+          <a class="card" href="case-studies/hiv-treatment-effectiveness.html">
+            <img src="assets/images/projects/hiv-overview.jpg" alt="Global HIV Trends dashboard overview" style="border-radius: var(--radius-md); margin-bottom: var(--space-sm); border: 1px solid var(--color-border);" width="1042" height="583" loading="lazy" />
+            <div class="card__header">
+              <h3 class="card__title">Global HIV treatment effectiveness</h3>
+              <span class="badge">Power BI</span>
+            </div>
+            <p class="card__description">
+              A 25-year, 150-country data model showing why rising case counts are a survival
+              signal, not a worsening epidemic — and which countries need urgent treatment
+              investment.
+            </p>
+            <span class="card__cta">Read the case study →</span>
+          </a>
+
+          <a class="card" href="case-studies/hospital-patient-dashboard.html">
+            <img src="assets/images/projects/hospital-dashboard.jpg" alt="Green Valley Medical Center Excel dashboard" style="border-radius: var(--radius-md); margin-bottom: var(--space-sm); border: 1px solid var(--color-border);" width="987" height="585" loading="lazy" />
+            <div class="card__header">
+              <h3 class="card__title">Hospital patient dashboard</h3>
+              <span class="badge">Excel</span>
+            </div>
+            <p class="card__description">
+              An earlier, smaller project: 400 patient records cleaned and modelled in Excel
+              into an interactive dashboard tracking recovery, cost, and department performance.
+            </p>
+            <span class="card__cta">Read the case study →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT TEASER
+         Deliberately short — two sentences, not a CV dump. Its only
+         job is to make the RMN + analyst combination land, then hand
+         off to the full About page.
+         ============================================================ -->
+    <section class="section section--alt" aria-labelledby="about-heading">
+      <div class="container container--narrow">
+        <span class="section__eyebrow">About</span>
+        <h2 id="about-heading" class="section__heading">A nurse who learned to build the dashboard herself</h2>
+        <p class="prose">
+          Most healthcare dashboards are built by people who have never worked a shift on a ward.
+          I have — in CAMHS, acute mental health, and crisis services — and that's exactly what
+          shapes how I model data, choose KPIs, and decide what a clinical team actually needs to
+          see first.
+        </p>
+        <p class="prose" style="margin-top: 1.5rem;">
+          <a href="about.html">Read the full story →</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <p class="footer__copyright">
+        © <span id="current-year">2026</span> Marian Ohwerhi. Built from scratch with HTML, CSS and JavaScript.
+      </p>
+      <ul class="footer__links">
+        <li><a class="nav__link" href="mailto:oriskevwe02@gmail.com">Email</a></li>
+        <li><a class="nav__link" href="https://www.linkedin.com/in/marian-ohwerhi/">LinkedIn</a></li>
+        <li><a class="nav__link" href="https://github.com/marianohwerhi">GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Loaded with defer so it never blocks page rendering, and runs
+       only after the HTML has been fully parsed. See assets/js/main.js
+       for what it does and why each part is there. -->
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
