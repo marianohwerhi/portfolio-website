@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Insights — Marian Ohwerhi</title>
+  <meta name="description" content="Short, original write-ups on healthcare data — starting with why rising case counts aren't always bad news." />
+  <meta name="author" content="Marian Ohwerhi" />
+  <link rel="canonical" href="https://marianohwerhi.github.io/insights.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Insights — Marian Ohwerhi" />
+  <meta property="og:description" content="Short, original write-ups on healthcare data." />
+  <meta property="og:url" content="https://marianohwerhi.github.io/insights.html" />
+  <meta property="og:image" content="https://marianohwerhi.github.io/assets/images/social-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png" />
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/variables.css" />
+  <link rel="stylesheet" href="assets/css/base.css" />
+  <link rel="stylesheet" href="assets/css/layout.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="nav__logo" href="index.html">Marian Ohwerhi</a>
+      <div class="nav__links" id="nav-links">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="index.html">Home</a></li>
+          <li><a class="nav__link" href="work.html">Work</a></li>
+          <li><a class="nav__link" href="about.html">About</a></li>
+          <li><a class="nav__link" href="insights.html" aria-current="page">Insights</a></li>
+          <li><a class="nav__link" href="contact.html">Contact</a></li>
+        </ul>
+        <a class="btn btn--secondary nav__resume" href="https://www.linkedin.com/in/marian-ohwerhi/">Résumé</a>
+      </div>
+      <button class="nav__toggle" id="nav-toggle" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Open menu">
+        <span class="nav__toggle-icon"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="section section--tight">
+      <div class="container">
+        <span class="section__eyebrow">Insights</span>
+        <h1 class="section__heading">Short, original write-ups on healthcare data</h1>
+      </div>
+    </section>
+
+    <article class="section section--tight">
+      <div class="container container--narrow prose">
+        <h2>Rising case numbers aren't always bad news — and that distinction matters for funding</h2>
+        <p style="color: var(--color-slate-muted); font-size: 0.9375rem;">From the Global HIV Treatment Effectiveness Analysis</p>
+
+        <p>
+          A number going up usually reads as a warning sign. In global health reporting, that
+          instinct causes real problems — because sometimes a rising number is exactly what
+          progress looks like, and treating it as a crisis can quietly undermine the funding that
+          produced it.
+        </p>
+
+        <p>
+          Take global HIV data between 2000 and 2024. Over that period, the number of people
+          recorded as living with HIV worldwide rose from roughly 22 million to 35.2 million. Read
+          in isolation, that looks like the epidemic getting worse. Read alongside the other two
+          numbers that moved in the same window — antiretroviral treatment (ART) coverage rising
+          from 6.8% to 66.4%, and the mortality rate falling from 7.8% to 1.49% — a different story
+          emerges: people are surviving HIV for far longer than they used to, so more of them are
+          alive to be counted. The rising total isn't the epidemic spreading faster. It's
+          treatment working.
+        </p>
+
+        <p>
+          This is a distinction with real consequences. If a rising case count gets reported as
+          "the epidemic is getting worse," it invites budget cuts to exactly the treatment
+          programmes responsible for the improvement — a self-defeating cycle that punishes
+          success because the top-line number moved the wrong way. Getting the underlying model
+          right isn't academic; it directly affects whether the next funding cycle protects or
+          undermines the intervention that's actually working.
+        </p>
+
+        <p>
+          The same pattern shows up closer to home. UK healthcare data regularly produces
+          headlines like "record numbers seeking mental health support" or "A&amp;E attendances
+          hit a new high." Those numbers can mean the underlying problem is worsening — or they
+          can mean stigma is falling and more people are willing to come forward, or that a
+          referral pathway that used to lose people silently is now catching them. The number
+          alone doesn't tell you which. What tells you which is whether it's read next to the
+          numbers that give it context: outcomes, capacity, and where in the system the increase
+          is actually occurring.
+        </p>
+
+        <p>
+          The practical takeaway for anyone building healthcare dashboards: a single trend line
+          is rarely the full story, and the most consequential analytical question is often not
+          "is this number going up or down" but "what would have to be true for that to be good
+          news, and does the rest of the data support it." That question is what turned a rising
+          PLHIV count from an alarming headline into the strongest finding in this project.
+        </p>
+
+        <p style="margin-top: var(--space-lg);">
+          <a href="work.html">See the full case study this is drawn from →</a>
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <p class="footer__copyright">© <span id="current-year">2026</span> Marian Ohwerhi. Built from scratch with HTML, CSS and JavaScript.</p>
+      <ul class="footer__links">
+        <li><a class="nav__link" href="mailto:oriskevwe02@gmail.com">Email</a></li>
+        <li><a class="nav__link" href="https://www.linkedin.com/in/marian-ohwerhi/">LinkedIn</a></li>
+        <li><a class="nav__link" href="https://github.com/marianohwerhi">GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
