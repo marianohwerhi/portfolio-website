@@ -87,6 +87,8 @@
   </script>
 </head>
 <body>
+  <div class="site-topbar" aria-hidden="true"></div>
+
   <!-- Skip link: the first focusable element on the page for keyboard
        users, letting them bypass the navigation entirely. Visually
        hidden until it receives focus — see .skip-link in base.css. -->
@@ -187,28 +189,28 @@
 
         <div class="card-grid">
           <a class="card" href="case-studies/hiv-treatment-effectiveness.html">
-            <img src="assets/images/projects/hiv-overview.jpg" alt="Global HIV Trends dashboard overview" style="border-radius: var(--radius-md); margin-bottom: var(--space-sm); border: 1px solid var(--color-border);" width="1042" height="583" loading="lazy" />
+            <img class="card__image" src="assets/images/projects/hiv-overview.jpg" alt="Global HIV Trends dashboard overview" width="1042" height="583" loading="lazy" />
             <div class="card__header">
               <h3 class="card__title">Global HIV treatment effectiveness</h3>
               <span class="badge">Power BI</span>
             </div>
             <p class="card__description">
               A 25-year, 150-country data model showing why rising case counts are a survival
-              signal, not a worsening epidemic — and which countries need urgent treatment
+              signal, not a worsening epidemic, and which countries need urgent treatment
               investment.
             </p>
             <span class="card__cta">Read the case study →</span>
           </a>
 
           <a class="card" href="case-studies/hospital-patient-dashboard.html">
-            <img src="assets/images/projects/hospital-dashboard.jpg" alt="Green Valley Medical Center Excel dashboard" style="border-radius: var(--radius-md); margin-bottom: var(--space-sm); border: 1px solid var(--color-border);" width="987" height="585" loading="lazy" />
+            <img class="card__image" src="assets/images/projects/hospital-dashboard.jpg" alt="Green Valley Medical Center Excel dashboard" width="987" height="585" loading="lazy" />
             <div class="card__header">
               <h3 class="card__title">Hospital patient dashboard</h3>
               <span class="badge">Excel</span>
             </div>
             <p class="card__description">
-              An earlier, smaller project: 400 patient records cleaned and modelled in Excel
-              into an interactive dashboard tracking recovery, cost, and department performance.
+              An earlier project analysing 400 patient records in Excel, built into an interactive
+              dashboard tracking recovery, cost, and department performance.
             </p>
             <span class="card__cta">Read the case study →</span>
           </a>
@@ -228,7 +230,7 @@
         <h2 id="about-heading" class="section__heading">A nurse who learned to build the dashboard herself</h2>
         <p class="prose">
           Most healthcare dashboards are built by people who have never worked a shift on a ward.
-          I have — in CAMHS, acute mental health, and crisis services — and that's exactly what
+          I have, in CAMHS, acute mental health, and crisis services, and that's exactly what
           shapes how I model data, choose KPIs, and decide what a clinical team actually needs to
           see first.
         </p>
