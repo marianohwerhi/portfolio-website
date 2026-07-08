@@ -14,8 +14,8 @@
      teal is the single accent; violet is reserved for one purpose only
      (flagging the standout finding inside a case study). See README.md
      for the full rationale. */
-  --color-canvas: #ffffff;          /* page background */
-  --color-canvas-alt: #f7f8f7;      /* subtle section background for contrast */
+  --color-canvas: #fdfdfc;          /* page background, a hair off pure white */
+  --color-canvas-alt: #f4f5f3;      /* subtle section background for contrast */
   --color-ink: #14181f;             /* primary text, headlines */
   --color-slate: #4b5563;           /* secondary / body text (AA on white) */
   --color-slate-muted: #6b7280;     /* tertiary text — captions, labels */
