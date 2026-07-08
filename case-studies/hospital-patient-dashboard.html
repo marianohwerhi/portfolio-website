@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Hospital Patient Dashboard (Excel) — Marian Ohwerhi</title>
-  <meta name="description" content="An Excel dashboard analysing 400 hospital patient records — pivot tables, calculated fields, and slicer-driven KPI reporting." />
+  <meta name="description" content="An Excel dashboard analysing 400 hospital patient records: pivot tables, calculated fields, and slicer-driven KPI reporting." />
   <meta name="author" content="Marian Ohwerhi" />
   <link rel="canonical" href="https://marianohwerhi.github.io/case-studies/hospital-patient-dashboard.html" />
 
@@ -31,6 +31,8 @@
   <link rel="stylesheet" href="../assets/css/components.css" />
 </head>
 <body>
+  <div class="site-topbar" aria-hidden="true"></div>
+
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header class="site-header">
@@ -59,9 +61,8 @@
         <span class="section__eyebrow" style="margin-top: var(--space-md);">Excel · Healthcare analytics</span>
         <h1>Hospital patient dashboard</h1>
         <p class="prose" style="font-size: var(--font-size-body-lg); margin-top: var(--space-sm);">
-          An earlier, smaller project than the HIV analysis: 400 hospital patient records cleaned
-          and modelled in Excel into an interactive dashboard tracking recovery, cost, and
-          department performance.
+          400 hospital patient records cleaned and modelled in Excel into an interactive
+          dashboard tracking recovery, cost, and department performance.
         </p>
 
         <dl class="meta-list">
@@ -72,12 +73,10 @@
         </dl>
 
         <div class="notice">
-          <strong>Known limitation:</strong> the dashboard sheet inside the source workbook was
-          affected by an autosave issue after the original build — the pivot tables and source
-          data are intact, but the dashboard itself needs to be rebuilt from them. The screenshot
-          and findings below reflect the completed dashboard as it was originally built and
-          presented. I'm disclosing this rather than presenting the screenshot as if the file were
-          fully live — see the rebuild plan in the
+          <strong>Status update:</strong> the dashboard sheet in the source workbook was lost
+          following an autosave failure. The underlying data and pivot tables were not affected.
+          The screenshot and findings below reflect the dashboard as it was originally built and
+          presented. A rebuild plan is documented in the
           <a href="https://github.com/marianohwerhi/hospital-patient-dashboard-excel">GitHub repository</a>.
         </div>
       </div>
@@ -87,26 +86,26 @@
       <div class="container container--narrow prose">
         <h2>The business problem</h2>
         <p>
-          Green Valley Medical Center (a fictional hospital used as the project brief) handles
-          large volumes of patient information daily — demographics, treatment details, hospital
-          stay length, cost, and recovery outcomes — stored in raw tables that were difficult to
+          Green Valley Medical Center, a fictional hospital used as the project brief, handles
+          large volumes of patient information daily: demographics, treatment details, hospital
+          stay length, cost, and recovery outcomes, stored in raw tables that were difficult to
           interpret quickly. Without visualisation, administrators struggled to monitor department
           performance and treatment effectiveness or make fast, data-driven decisions.
         </p>
 
         <h2>The approach</h2>
         <p>
-          400 patient records — department, treatment type, doctor, age, gender, treatment cost,
-          hospital stay, and recovery score — checked for duplicates, blanks, and missing values
-          (none found). I added two calculated fields not present in the raw data, <strong>age
-          group</strong> and <strong>cost category</strong>, to make department and demographic
-          comparisons meaningful rather than working from raw ages and cost figures directly. On
-          top of that I built pivot tables summarising recovery, cost, and stay length by
-          department, doctor, treatment type, and gender, then an interactive dashboard with
-          slicers for each.
+          The dataset contained 400 patient records across department, treatment type, doctor,
+          age, gender, treatment cost, hospital stay, and recovery score, checked for duplicates,
+          blanks, and missing values (none found). Two calculated fields were added that were not
+          present in the raw data, <strong>age group</strong> and <strong>cost category</strong>,
+          to make department and demographic comparisons meaningful rather than working from raw
+          ages and cost figures directly. Pivot tables were then built to summarise recovery,
+          cost, and stay length by department, doctor, treatment type, and gender, followed by an
+          interactive dashboard with slicers for each.
         </p>
         <figure>
-          <img src="../assets/images/projects/hospital-dashboard.jpg" alt="Green Valley Medical Center dashboard showing KPI cards and charts for recovery score, treatment cost, and patient distribution" loading="lazy" width="987" height="585" />
+          <img class="card__image" style="aspect-ratio: 16/9;" src="../assets/images/projects/hospital-dashboard.jpg" alt="Green Valley Medical Center dashboard showing KPI cards and charts for recovery score, treatment cost, and patient distribution" loading="lazy" width="987" height="585" />
           <figcaption>The completed dashboard, as presented.</figcaption>
         </figure>
 
@@ -115,7 +114,7 @@
           <li>Recovery score varied by department, ranging from roughly 71 to 77 across the seven departments tracked.</li>
           <li>Longer hospital stays were more often associated with more complex, higher-cost cases.</li>
           <li>Patients receiving surgery or therapy showed marginally higher average recovery scores than those under observation alone.</li>
-          <li>Putting the same data behind an interactive dashboard — rather than a static table — made department-level and doctor-level patterns visible in a way the raw spreadsheet didn't surface on its own.</li>
+          <li>Presenting the same data through an interactive dashboard, rather than a static table, made department-level and doctor-level patterns visible in a way the raw spreadsheet did not surface on its own.</li>
         </ul>
 
         <h2>Recommendations</h2>
@@ -123,15 +122,15 @@
           <li>Continue using dashboards, not raw tables, for ongoing performance monitoring.</li>
           <li>Prioritise resource planning for departments showing higher treatment costs.</li>
           <li>Use recovery trends by treatment type to inform care strategy discussions.</li>
-          <li>Longer term: connect the dashboard to a live hospital data source instead of a static export, to support real-time reporting.</li>
+          <li>Longer term, connect the dashboard to a live hospital data source instead of a static export to support real-time reporting.</li>
         </ul>
 
-        <h2>Why this project is included despite the limitation</h2>
+        <h2>Status and next steps</h2>
         <p>
-          Disclosing a real limitation, with a concrete plan to fix it, is a more accurate
-          representation of actual analytics work than only ever showing finished, frictionless
-          output. This was also an earlier project than the HIV analysis — keeping it visible
-          shows the progression from Excel fundamentals to a full Power BI star-schema model.
+          This project predates the HIV analysis and demonstrates the Excel fundamentals that
+          underpin the later Power BI work: pivot tables, calculated fields, and slicer-driven
+          dashboard design. The rebuild is tracked in the project repository, along with the
+          steps needed to bring the dashboard sheet back to a working state.
         </p>
 
         <p style="margin-top: var(--space-lg);">

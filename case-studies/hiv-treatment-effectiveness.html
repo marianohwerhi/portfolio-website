@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Global HIV Treatment Effectiveness Analysis — Marian Ohwerhi</title>
-  <meta name="description" content="A 25-year, 150-country Power BI analysis of WHO HIV data — star schema data model, DAX measures, and country-level treatment recommendations." />
+  <meta name="description" content="A 25-year, 150-country Power BI analysis of WHO HIV data: star schema data model, DAX measures, and country-level treatment recommendations." />
   <meta name="author" content="Marian Ohwerhi" />
   <link rel="canonical" href="https://marianohwerhi.github.io/case-studies/hiv-treatment-effectiveness.html" />
 
@@ -42,6 +42,8 @@
   </script>
 </head>
 <body>
+  <div class="site-topbar" aria-hidden="true"></div>
+
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <header class="site-header">
@@ -77,7 +79,7 @@
 
         <dl class="meta-list">
           <div><dt>Tools</dt><dd>Power BI, Power Query, DAX</dd></div>
-          <div><dt>Scope</dt><dd>150 countries, 2000–2024</dd></div>
+          <div><dt>Scope</dt><dd>150 countries, 2000 to 2024</dd></div>
           <div><dt>Records</dt><dd>9,763</dd></div>
           <div><dt>Source</dt><dd>WHO official data</dd></div>
         </dl>
@@ -89,73 +91,73 @@
         <h2>The business problem</h2>
         <p>
           Between 2000 and 2024, the number of people living with HIV worldwide rose from 22
-          million to 35.2 million — while global health messaging simultaneously described the
-          epidemic as improving. Both statements are true, and that's exactly the problem: without
-          a model connecting infection rates, treatment coverage, and mortality, stakeholders had
-          no way to tell whether rising case counts meant the epidemic was worsening, or whether
-          more people were simply surviving longer under treatment. Resource allocation was also
-          untargeted — there was no systematic way to identify which specific countries combined
-          high infection burden with low treatment access.
+          million to 35.2 million, while global health messaging simultaneously described the
+          epidemic as improving. Both statements are true, and that is exactly the problem.
+          Without a model connecting infection rates, treatment coverage, and mortality,
+          stakeholders had no way to tell whether rising case counts meant the epidemic was
+          worsening, or whether more people were simply surviving longer under treatment. Resource
+          allocation was also untargeted, with no systematic way to identify which specific
+          countries combined high infection burden with low treatment access.
         </p>
 
         <h2>The approach</h2>
         <p>
-          I modelled the data as a star schema — one fact table against three dimension tables
-          (country, indicator, date) — so every measure stays accurate regardless of which filters
+          The data was modelled as a star schema: one fact table against three dimension tables
+          (country, indicator, date), so every measure stays accurate regardless of which filters
           are applied, and new indicators could be added later without rebuilding the model.
         </p>
         <figure>
-          <img src="../assets/images/projects/hiv-data-model.jpg" alt="Star schema data model showing FactHIV connected to DimCountry, DimIndicator, and DimDate tables" loading="lazy" width="768" height="579" />
+          <img class="card__image" style="aspect-ratio: 4/3;" src="../assets/images/projects/hiv-data-model.jpg" alt="Star schema data model showing FactHIV connected to DimCountry, DimIndicator, and DimDate tables" loading="lazy" width="768" height="579" />
           <figcaption>The star schema behind every measure on the report.</figcaption>
         </figure>
         <p>
-          On top of that model I wrote ten DAX measures — mortality rate, average ART coverage,
-          year-on-year change, and deaths per 1,000 new infections among them — and built a
-          three-page report: a global overview, a correlation analysis, and a ranked list of
+          On top of that model, ten DAX measures were written (mortality rate, average ART
+          coverage, year-on-year change, and deaths per 1,000 new infections among them), feeding
+          a three-page report: a global overview, a correlation analysis, and a ranked list of
           countries needing urgent intervention.
         </p>
         <figure>
-          <img src="../assets/images/projects/hiv-overview.jpg" alt="Global overview dashboard page showing KPI cards for PLHIV, deaths, new infections, ART coverage, and mortality rate" loading="lazy" width="1042" height="583" />
-          <figcaption>Page 1 — the 2024 global picture.</figcaption>
+          <img class="card__image" style="aspect-ratio: 16/9;" src="../assets/images/projects/hiv-overview.jpg" alt="Global overview dashboard page showing KPI cards for PLHIV, deaths, new infections, ART coverage, and mortality rate" loading="lazy" width="1042" height="583" />
+          <figcaption>Page 1: the 2024 global picture.</figcaption>
         </figure>
 
         <h2>The insight</h2>
         <p>
           The headline finding: <strong>rising PLHIV (people living with HIV) numbers are a
           survival metric, not a sign the epidemic is worsening.</strong> ART coverage rose from
-          6.8% to 66.4% over the same period that mortality fell from 7.8% to 1.49% — people are
+          6.8% to 66.4% over the same period that mortality fell from 7.8% to 1.49%. People are
           surviving, not disappearing from the count.
         </p>
         <div class="callout">
           <span class="callout__label">Worth watching</span>
-          HIV deaths rose 1.17% in 2024 — the first increase after two decades of decline. A
+          HIV deaths rose 1.17% in 2024, the first increase after two decades of decline. A
           warning, not yet a trend, but the first data point in 20 years pointing the wrong way.
         </div>
         <figure>
-          <img src="../assets/images/projects/hiv-correlation.jpg" alt="Scatter plot of ART coverage against mortality rate by country, and a ranked bar chart of deaths per 1,000 new infections" loading="lazy" width="1037" height="586" />
-          <figcaption>Page 2 — ART coverage directly reduces mortality.</figcaption>
+          <img class="card__image" style="aspect-ratio: 16/9;" src="../assets/images/projects/hiv-correlation.jpg" alt="Scatter plot of ART coverage against mortality rate by country, and a ranked bar chart of deaths per 1,000 new infections" loading="lazy" width="1037" height="586" />
+          <figcaption>Page 2: ART coverage directly reduces mortality.</figcaption>
         </figure>
 
         <h2>The recommendation</h2>
         <p>
           Cross-referencing new infections against ART coverage identified <strong>7 countries</strong>
           where both high infection burden (over 10,000 new infections) and low treatment access
-          (under 50% ART coverage) occur at once — led by the Philippines (31,000 new infections)
+          (under 50% ART coverage) occur at once, led by the Philippines (31,000 new infections)
           and Madagascar (29% ART coverage, the lowest of the seven). These are the countries where
           additional ART investment would save the most lives per pound spent, rather than
           spreading resources evenly across all 150 countries in the dataset.
         </p>
         <figure>
-          <img src="../assets/images/projects/hiv-priority-countries.jpg" alt="Table of seven priority countries requiring urgent intervention, with ART coverage, new infections, and mortality rate columns" loading="lazy" width="1040" height="584" />
-          <figcaption>Page 3 — the seven countries meeting both risk criteria.</figcaption>
+          <img class="card__image" style="aspect-ratio: 16/9;" src="../assets/images/projects/hiv-priority-countries.jpg" alt="Table of seven priority countries requiring urgent intervention, with ART coverage, new infections, and mortality rate columns" loading="lazy" width="1040" height="584" />
+          <figcaption>Page 3: the seven countries meeting both risk criteria.</figcaption>
         </figure>
 
         <h2>Limitations</h2>
-        <p>Documented honestly rather than glossed over, because knowing where a model's edges are is part of the analysis:</p>
+        <p>Documented plainly rather than glossed over, because knowing where a model's edges are is part of the analysis.</p>
         <ul style="padding-left: 1.25rem; list-style: disc; color: var(--color-slate);">
           <li>ART coverage averages are unweighted by population, so small and large countries currently count equally in the global average.</li>
-          <li>Pre-2020 ART and infection data is only available as 5-year snapshots rather than annual figures, which delayed detection of the 2023–2024 uptick in deaths.</li>
-          <li>Data is aggregated at country level; sub-national variation isn't visible.</li>
+          <li>Pre-2020 ART and infection data is only available as 5-year snapshots rather than annual figures, which delayed detection of the 2023 to 2024 uptick in deaths.</li>
+          <li>Data is aggregated at country level; sub-national variation is not visible.</li>
         </ul>
 
         <p style="margin-top: var(--space-lg);">
