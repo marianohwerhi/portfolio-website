@@ -195,6 +195,30 @@ a.card:hover .card__cta {
   color: var(--color-ink);
 }
 
+/* --- Code block --------------------------------------------------------------
+   Used in the DORI case study's SQL Spotlight section. Sits on the subtle
+   canvas-alt surface (same tint used for .section--alt) rather than pure
+   white, so a block of code reads as a distinct "artifact" dropped into
+   the prose rather than body copy. */
+
+.code-block {
+  background: var(--color-canvas-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  overflow-x: auto;
+  margin-block: var(--space-md);
+}
+
+.code-block code {
+  display: block;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.8125rem;
+  line-height: var(--line-height-relaxed);
+  color: var(--color-ink);
+  white-space: pre;
+}
+
 /* --- Prose images ----------------------------------------------------------------
    Case study screenshots dropped inline in long-form content. */
 
