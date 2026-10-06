@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>VitalLink Telehealth Alert Response Dashboard — Marian Ohwerhi</title>
+  <meta name="description" content="A two-page Tableau dashboard on 10,500 telehealth alerts from a fictional company, showing where clinicians were slow to respond (SLA analysis) and whether device battery or connection type explained warning alerts." />
+  <meta name="author" content="Marian Ohwerhi" />
+  <link rel="canonical" href="https://marianohwerhi.github.io/portfolio-website/case-studies/vitallink-telehealth-sla-monitoring.html" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="VitalLink Telehealth Alert Response Dashboard" />
+  <meta property="og:description" content="A two-page Tableau dashboard on 10,500 telehealth alerts, built as a healthcare analytics capstone." />
+  <meta property="og:url" content="https://marianohwerhi.github.io/portfolio-website/case-studies/vitallink-telehealth-sla-monitoring.html" />
+  <meta property="og:image" content="https://marianohwerhi.github.io/portfolio-website/assets/images/social-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16.png" />
+  <link rel="apple-touch-icon" href="../assets/images/apple-touch-icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/variables.css" />
+  <link rel="stylesheet" href="../assets/css/base.css" />
+  <link rel="stylesheet" href="../assets/css/layout.css" />
+  <link rel="stylesheet" href="../assets/css/components.css" />
+
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "VitalLink Telehealth Alert Response Dashboard",
+      "creator": { "@type": "Person", "name": "Marian Ohwerhi" },
+      "about": "Tableau dashboard analysing 10,500 telehealth alerts from a fictional provider, as a healthcare analytics capstone",
+      "url": "https://marianohwerhi.github.io/portfolio-website/case-studies/vitallink-telehealth-sla-monitoring.html"
+    }
+  </script>
+</head>
+<body>
+  <div class="site-topbar" aria-hidden="true"></div>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="nav__logo" href="../index.html">Marian Ohwerhi</a>
+      <div class="nav__links" id="nav-links">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="../index.html">Home</a></li>
+          <li><a class="nav__link" href="../work.html" aria-current="page">Work</a></li>
+          <li><a class="nav__link" href="../about.html">About</a></li>
+          <li><a class="nav__link" href="../insights.html">Insights</a></li>
+          <li><a class="nav__link" href="../contact.html">Contact</a></li>
+        </ul>
+        <a class="btn btn--secondary nav__resume" href="../assets/documents/resume.pdf">Résumé</a>
+      </div>
+      <button class="nav__toggle" id="nav-toggle" type="button" aria-controls="nav-links" aria-expanded="false" aria-label="Open menu">
+        <span class="nav__toggle-icon"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <article class="section section--tight">
+      <div class="container container--narrow">
+        <p><a class="prose" href="../work.html" style="color: var(--color-teal); text-decoration: underline;">← Back to Work</a></p>
+        <span class="section__eyebrow" style="margin-top: var(--space-md);">Tableau · Healthcare analytics</span>
+        <h1>VitalLink telehealth alert response dashboard</h1>
+        <p class="prose" style="font-size: var(--font-size-body-lg); margin-top: var(--space-sm);">
+          A two-page Tableau dashboard for a fictional company that monitors patients remotely.
+          It shows where clinicians were slow to respond to alerts, and whether device battery
+          or connection type explained the number of warning alerts.
+        </p>
+
+        <dl class="meta-list">
+          <div><dt>Tools</dt><dd>Tableau</dd></div>
+          <div><dt>Scope</dt><dd>10,500 alerts, 12 clinicians, 4 hubs</dd></div>
+          <div><dt>Data</dt><dd>4 linked tables</dd></div>
+          <div><dt>Period</dt><dd>January 2026</dd></div>
+        </dl>
+
+        <div class="notice">
+          <strong>About this project:</strong> a capstone from the 10Alytics healthcare data
+          analytics programme. VitalLink Telehealth Solutions is a fictional company, and the
+          dataset came with the brief. It is not real NHS or patient data.
+        </div>
+      </div>
+    </article>
+
+    <article class="section section--alt section--tight">
+      <div class="container container--narrow prose">
+        <h2>The business problem</h2>
+        <p>
+          VitalLink is a fictional company that supplies wearable health monitors to hospitals
+          and clinics. The devices send alerts to clinical teams, for example when a vital sign
+          such as blood pressure or glucose looks abnormal, so that patients with conditions like
+          diabetes and hypertension can be looked after early.
+        </p>
+        <p>
+          The brief described three problems. Urgent and non-urgent alerts arrived in one mixed
+          feed, so nurses could start to tune them out (often called alarm fatigue). Managers
+          could not see which regional hubs were failing to review high-priority alerts within 2
+          hours, a target known as an SLA, or service level agreement. And nobody knew whether
+          older devices or low batteries were behind a rise in warning alerts.
+        </p>
+        <p>
+          The company's Chief Operating Officer asked for a simple, interactive two-page Tableau
+          dashboard to show the Clinical Operations Board. The brief cast me as the Lead
+          Healthcare Data Analyst.
+        </p>
+
+        <h2>The data</h2>
+        <p>
+          The data came as four tables: one with 10,500 alerts, and three describing the
+          patients, clinicians and devices involved. The alerts were recorded across January
+          2026 and involve 4,417 patients, 12 clinicians working in four regional hubs, and 40
+          devices of four models.
+        </p>
+        <p>
+          I linked the tables in Tableau using each patient, clinician and device ID. This
+          layout is called a star schema: one central table of events with smaller tables
+          around it. Every alert matched a patient, a clinician and a device, and none had
+          missing values.
+        </p>
+        <figure>
+          <img class="card__image" style="aspect-ratio: 900 / 700;" src="../assets/images/projects/vitallink-star-schema.svg" alt="Star schema showing the Vital_Alert_Fact table joined to Dim_Patient on PatientID, Dim_Clinician on ClinicianID and Dim_Device on DeviceID" loading="lazy" width="900" height="700" />
+          <figcaption>The four tables and how they connect.</figcaption>
+        </figure>
+        <p>
+          I then created the measures the brief asked for. Each alert was marked as within the
+          2-hour target or breached, which gave me the number and percentage of breaches and a
+          compliance rate for each clinician. I also grouped patients by age (45 to 54, 55 to
+          64, 65 to 74, and 75 and over) and devices by battery level.
+        </p>
+
+        <h2>The dashboard</h2>
+        <p>
+          The first page looks at the alerts themselves: how many there were, how severe, which
+          vital sign triggered them, and which patients and cities they came from. The second
+          page looks at the response: how long each hub took compared with the 2-hour target,
+          how clinicians' workloads and compliance compare, and whether device battery or
+          connection type is linked to warning alerts.
+        </p>
+        <figure>
+          <img class="card__image" style="aspect-ratio: 1390 / 721;" src="../assets/images/projects/vitallink-dashboard-page1.png" alt="Tableau dashboard page 1, Patient Alerts Profile, showing total alerts, SLA breaches, alert volume by severity, alerts by vital type, alerts by age group and condition, and alerts by city" loading="lazy" width="1390" height="721" />
+          <figcaption>Page 1: Patient Alerts Profile.</figcaption>
+        </figure>
+        <figure>
+          <img class="card__image" style="aspect-ratio: 1358 / 722;" src="../assets/images/projects/vitallink-dashboard-page2.png" alt="Tableau dashboard page 2, Device Health and Clinician Efficiency, showing SLA breaches, average response time by hub against the 2-hour target, clinician workload and compliance, and warning alerts by battery status and connectivity" loading="lazy" width="1358" height="722" />
+          <figcaption>Page 2: Device Health and Clinician Efficiency. In the clinician chart, the teal part of each bar is the share of that clinician's alerts reviewed within 2 hours (the same percentage is repeated on the grey part).</figcaption>
+        </figure>
+
+        <h2>Key findings</h2>
+        <p>
+          <strong>Most alerts were not urgent.</strong> Only 1,591 of the 10,500 alerts (15.2%)
+          were Critical. The rest were Warning (3,668) or Normal (5,241). Urgent alerts are a
+          small share of a large feed, which is where alarm fatigue can develop.
+        </p>
+        <p>
+          <strong>Almost every alert took longer than 2 hours to review.</strong> 8,425 alerts
+          (80.2%) missed the target. Critical alerts were reviewed fastest, in 1.82 hours on
+          average. Warning alerts took 3.28 hours and Normal alerts 12.58 hours. Most of the
+          missed targets (91%) were Normal and Warning alerts.
+        </p>
+        <div class="callout">
+          <span class="callout__label">Worth noting</span>
+          An average can hide a problem. Critical alerts averaged 1.82 hours, which is inside
+          the target, but 729 of the 1,591 Critical alerts (45.8%) still took longer than 2
+          hours. The brief describes the target as applying to high-priority alerts, so this
+          figure matters on its own, separately from the 80.2% overall.
+        </div>
+        <p>
+          <strong>The delay was spread across the whole service, not one hub or one
+          clinician.</strong> All four hubs averaged between 7.6 and 7.8 hours to respond,
+          nearly four times the target. All 12 clinicians handled a similar number of alerts
+          (798 to 944) and met the target on only 18% to 21% of them. When everyone performs
+          about the same, that points to the process rather than to individuals.
+        </p>
+        <p>
+          <strong>Alerts were spread evenly across vital signs, conditions and cities.</strong>
+          Blood pressure, pulse, glucose and oxygen each caused roughly the same number of
+          alerts (2,594 to 2,658). Patients with diabetes and hypertension generated similar
+          numbers in every age group, and the four cities were close together (2,482 to 2,773
+          alerts). Chicago had the highest share of Critical alerts at 16.3%, against 14.2% to
+          15.1% in the other three.
+        </p>
+        <p>
+          <strong>People aged 75 and over generated the most alerts, but they are also the
+          biggest group.</strong> They raised 3,397 alerts, against 2,273 to 2,429 for the other
+          age groups, and make up about a third of the patients who raised alerts (1,418 of
+          4,417). Patients in every age group raised about the same number each, 2.3 to 2.4 on
+          average. So the higher total comes from the size of the group, not from older
+          patients alerting more.
+        </p>
+        <p>
+          <strong>Battery level and connection type did not explain the warning alerts.</strong>
+          Warning alerts were highest in the 75 to 100% battery group (1,487) and lowest in the
+          0 to 25% group (453). That looks surprising, but the high-battery group contains 16 of
+          the 40 devices and the low-battery group only 5. Warnings were a similar share of
+          alerts in every battery group, between 33% and 36%. Connection type made no
+          difference either: 1,843 warnings on cellular devices and 1,825 on Bluetooth.
+        </p>
+
+        <h2>From analysis to action</h2>
+        <ul style="padding-left: 1.25rem; list-style: disc; color: var(--color-slate);">
+          <li>Consider sorting alerts by urgency, so Normal and Warning alerts are reviewed on a slower, planned cycle and stop competing with Critical alerts.</li>
+          <li>Find out why almost half of Critical alerts still took longer than 2 hours, because the average hides it.</li>
+          <li>Review the 2-hour target and the staffing behind it across all hubs, instead of looking at hubs or clinicians one by one.</li>
+          <li>Look for other causes of warning alerts, such as device model, calibration or alert settings.</li>
+        </ul>
+
+        <h2>What I learned</h2>
+        <p>
+          The most useful habit in this project was asking what an average was hiding. Critical
+          alerts averaged 1.82 hours, which is inside the 2-hour target, and it would have been
+          easy to stop there. Counting the individual alerts showed that almost half of them
+          still missed it.
+        </p>
+        <p>
+          It was also another reminder, as in my DORI project, to compare rates rather than
+          only counts. The 75 and over group and the 75 to 100% battery group both stand out in
+          the totals, but once I allowed for how many patients and devices sat in each, neither
+          turned out to drive the alerts. And when everything looks similar, as it did across
+          hubs and clinicians, that is a finding in itself: it points to a shared process rather
+          than to individuals.
+        </p>
+
+        <h2>Tools &amp; skills</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-2xs); margin-top: var(--space-sm);">
+          <span class="badge">Tableau</span>
+          <span class="badge">Data modelling</span>
+          <span class="badge">Calculated fields</span>
+          <span class="badge">Level of detail calculations</span>
+          <span class="badge">Dashboard design</span>
+          <span class="badge">Healthcare analytics</span>
+          <span class="badge">Data storytelling</span>
+        </div>
+
+        <h2 style="margin-top: var(--space-xl);">Limitations</h2>
+        <p>Documented plainly rather than glossed over, because knowing where an analysis stops is part of doing it properly.</p>
+        <ul style="padding-left: 1.25rem; list-style: disc; color: var(--color-slate);">
+          <li>This is a training project. VitalLink is fictional and the data came with the brief, so the findings apply to this dataset only.</li>
+          <li>The alerts cover one month (January 2026), so I could not look at trends over time.</li>
+          <li>The brief's instructions applied the 2-hour target to every alert, although it describes the target as being for high-priority alerts. I report both the overall figure (80.2%) and the Critical-only figure (45.8%).</li>
+          <li>Each device has a single battery reading, so the battery groups compare devices with each other rather than tracking one device over time.</li>
+          <li>The battery and connection results describe this dataset. They show no link with warning alerts here, which does not mean device condition never matters.</li>
+        </ul>
+
+        <p style="margin-top: var(--space-lg);">
+          <a href="../assets/documents/VitalLink_Capstone_Slides.pdf">View the capstone slides (PDF) →</a>
+        </p>
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__inner">
+      <p class="footer__copyright">© <span id="current-year">2026</span> Marian Ohwerhi. Built from scratch with HTML, CSS and JavaScript.</p>
+      <ul class="footer__links">
+        <li><a class="nav__link" href="mailto:oriskevwe02@gmail.com">Email</a></li>
+        <li><a class="nav__link" href="https://www.linkedin.com/in/marian-ohwerhi/">LinkedIn</a></li>
+        <li><a class="nav__link" href="https://github.com/marianohwerhi">GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js" defer></script>
+</body>
+</html>
