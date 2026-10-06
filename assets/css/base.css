@@ -94,19 +94,19 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-family-heading);
   color: var(--color-ink);
-  font-weight: var(--font-weight-regular); /* Instrument Serif ships a single weight */
+  font-weight: var(--font-weight-medium);
   line-height: var(--line-height-tight);
 }
 
 h1 {
   font-size: var(--font-size-h1);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 h2 {
   font-size: var(--font-size-h2);
+  letter-spacing: -0.01em;
 }
 
 h3 {
@@ -115,6 +115,22 @@ h3 {
 
 p {
   max-width: 65ch;
+}
+
+/* Reading text uses the serif body face. Headings, navigation, buttons,
+   badges and labels are not listed here, so they stay in the sans-serif
+   interface face set on <body>. */
+p,
+.prose li,
+.callout,
+.notice,
+.skill-group__list {
+  font-family: var(--font-family-body);
+}
+
+p,
+.prose li {
+  line-height: 1.7;
 }
 
 p + p {
