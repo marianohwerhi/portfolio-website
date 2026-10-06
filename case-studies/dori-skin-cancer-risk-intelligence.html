@@ -7,13 +7,13 @@
   <title>DORI Skin Cancer Risk Intelligence — Marian Ohwerhi</title>
   <meta name="description" content="A PostgreSQL analysis of 1,088 patients and skin lesion records, exploring which demographic, clinical, environmental and lifestyle factors were associated with malignant diagnoses." />
   <meta name="author" content="Marian Ohwerhi" />
-  <link rel="canonical" href="https://marianohwerhi.github.io/case-studies/dori-skin-cancer-risk-intelligence.html" />
+  <link rel="canonical" href="https://marianohwerhi.github.io/portfolio-website/case-studies/dori-skin-cancer-risk-intelligence.html" />
 
   <meta property="og:type" content="article" />
   <meta property="og:title" content="DORI Skin Cancer Risk Intelligence" />
   <meta property="og:description" content="A PostgreSQL analysis of 1,088 patients and lesion records, identifying patterns associated with malignant skin cancer diagnoses." />
-  <meta property="og:url" content="https://marianohwerhi.github.io/case-studies/dori-skin-cancer-risk-intelligence.html" />
-  <meta property="og:image" content="https://marianohwerhi.github.io/assets/images/social-preview.png" />
+  <meta property="og:url" content="https://marianohwerhi.github.io/portfolio-website/case-studies/dori-skin-cancer-risk-intelligence.html" />
+  <meta property="og:image" content="https://marianohwerhi.github.io/portfolio-website/assets/images/social-preview.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg" />
@@ -23,7 +23,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="../assets/css/variables.css" />
   <link rel="stylesheet" href="../assets/css/base.css" />
@@ -37,7 +37,7 @@
       "name": "DORI Skin Cancer Risk Intelligence",
       "creator": { "@type": "Person", "name": "Marian Ohwerhi" },
       "about": "PostgreSQL analysis of patient and skin lesion records, exploring factors associated with malignant diagnoses",
-      "url": "https://marianohwerhi.github.io/case-studies/dori-skin-cancer-risk-intelligence.html"
+      "url": "https://marianohwerhi.github.io/portfolio-website/case-studies/dori-skin-cancer-risk-intelligence.html"
     }
   </script>
 </head>
@@ -91,33 +91,33 @@
         <h2>The business problem</h2>
         <p>
           The analysis explored demographic, clinical, environmental and lifestyle
-          characteristics associated with malignant skin cancer diagnoses, with the aim of
-          identifying patterns that could help inform screening priorities. The data existed
-          across two related tables — patient-level and lesion-level — and needed a structured,
-          validated query approach rather than a surface read of the raw records.
+          characteristics associated with malignant skin cancer diagnoses. The aim was to
+          identify patterns that could help inform screening priorities. The data sat across
+          two related tables, one patient-level and one lesion-level, so it needed a
+          structured, validated query approach rather than a surface read of the raw records.
         </p>
 
         <h2>The data</h2>
         <p>
           The dataset covered 1,088 patients and 1,088 corresponding lesion records, split
-          across six diagnostic categories: three malignant (Basal Cell Carcinoma, Squamous
-          Cell Carcinoma, Melanoma) and three non-malignant (Actinic Keratosis, Nevus,
-          Seborrheic Keratosis). Overall, 346 of the 1,088 diagnoses — 31.8% — were malignant.
+          across six diagnostic categories. Three were malignant (Basal Cell Carcinoma,
+          Squamous Cell Carcinoma and Melanoma) and three were non-malignant (Actinic
+          Keratosis, Nevus and Seborrheic Keratosis). Overall, 346 of the 1,088 diagnoses,
+          or 31.8%, were malignant.
         </p>
         <p>
-          The data lived in two related tables: one holding patient-level information (age,
-          gender, prior skin cancer history, lifestyle habits, environmental access), and one
-          holding lesion-level information (diagnosis, body region, diameter, growth, symptoms,
-          biopsy status).
+          The patient-level table held age, gender, prior skin cancer history, lifestyle
+          habits and environmental access. The lesion-level table held diagnosis, body
+          region, diameter, growth, symptoms and biopsy status.
         </p>
 
         <h2>Database structure</h2>
         <p>
-          The two tables connect through a single relationship: every lesion record links back
-          to a patient via <code>patient_id</code>. Before writing a single analytical query, I
-          confirmed this relationship held cleanly — every lesion record has a matching patient,
-          and no patient has more than one lesion row — so the join could be trusted throughout
-          the rest of the analysis.
+          The two tables connect through a single relationship: every lesion record links
+          back to a patient through <code>patient_id</code>. Before writing a single
+          analytical query, I confirmed that this relationship held cleanly. Every lesion
+          record has a matching patient, and no patient has more than one lesion row, so the
+          join could be trusted throughout the analysis.
         </p>
         <figure>
           <img class="card__image" style="aspect-ratio: 900 / 480;" src="../assets/images/projects/dori-schema.svg" alt="Database schema showing table1 (patient-level) and table2 (lesion-level) related through patient_id, the validated join key" loading="lazy" width="900" height="480" />
@@ -126,10 +126,11 @@
 
         <h2>Data quality and validation</h2>
         <p>
-          Before trusting any result, I validated the structure of the data itself — NULL
-          checks across every key demographic and clinical field, duplicate-record checks on
-          both tables, referential integrity between them, and a check on whether the
-          identifiers I planned to use actually meant what the data dictionary said they meant.
+          Before trusting any result, I validated the structure of the data itself. I ran
+          NULL checks across every key demographic and clinical field, duplicate checks on
+          both tables, and a referential integrity check between them. I also tested whether
+          the identifiers I planned to use actually meant what the data dictionary said they
+          meant.
         </p>
         <p>
           That last check mattered more than expected. The data dictionary described
@@ -140,13 +141,14 @@
     COUNT(DISTINCT lesion_id) AS unique_lesion_ids
 FROM table2;</code></div>
         <p>
-          The result: 1,088 total lesion records, but only 1,007 distinct <code>lesion_id</code>
-          values. This showed that <code>lesion_id</code> was not globally unique despite being
-          described as unique in the data documentation. Because <code>patient_id</code>
-          maintained a validated one-to-one relationship between the tables, the analysis used
-          <code>patient_id</code> for joins and did not rely on <code>lesion_id</code> as a
-          unique key. Every other check came back clean: zero NULLs across the key fields, zero
-          duplicate patient records, and referential integrity holding as expected.
+          The result was 1,088 total lesion records but only 1,007 distinct
+          <code>lesion_id</code> values. This showed that <code>lesion_id</code> was not
+          globally unique, despite being described as unique in the data documentation.
+          Because <code>patient_id</code> maintained a validated one-to-one relationship
+          between the tables, the analysis used <code>patient_id</code> for joins and did not
+          rely on <code>lesion_id</code> as a unique key. Every other check came back clean,
+          with zero NULLs across the key fields, zero duplicate patient records and
+          referential integrity holding as expected.
         </p>
         <figure>
           <img class="card__image" style="aspect-ratio: 936 / 674;" src="../assets/images/projects/dori-data-quality.png" alt="pgAdmin screenshot of the lesion_id uniqueness check, showing 1,088 total rows against 1,007 distinct values" loading="lazy" width="936" height="674" />
@@ -155,37 +157,37 @@ FROM table2;</code></div>
 
         <h2>Analytical approach</h2>
         <p>
-          With the data validated, I worked through the dataset in four passes: demographic
-          characteristics (age, gender, prior history), clinical characteristics (diagnosis
-          type, lesion growth, diameter, symptoms), environmental factors (sanitation access),
-          and lifestyle factors (smoking, drinking). For each, I looked first at raw counts,
-          then — where it changed the picture — at rates, since the two answer genuinely
-          different questions.
+          With the data validated, I worked through it in four passes: demographic
+          characteristics (age, gender and prior history), clinical characteristics
+          (diagnosis type, lesion growth, diameter and symptoms), environmental factors
+          (sanitation access) and lifestyle factors (smoking and drinking). For each, I looked
+          first at raw counts and then, where it changed the picture, at rates, because the
+          two answer different questions.
         </p>
 
         <h2>Key findings</h2>
         <p>
           <strong>Previous skin cancer history showed the strongest observed association with
-          malignancy in the dataset.</strong> Patients with a documented history showed a 70.1%
-          observed malignancy rate, compared to 21.9% for patients with no history — despite
-          that group making up only about a fifth of the population.
+          malignancy.</strong> Patients with a documented history had a 70.1% observed
+          malignancy rate, compared with 21.9% for patients with no history. That group made
+          up only about a fifth of the population.
         </p>
         <p>
-          <strong>Growing lesions showed a markedly higher observed malignancy rate than stable
-          ones.</strong> 50.8% of growing lesions were malignant, versus 15.1% of lesions with
-          no reported growth.
+          <strong>Growing lesions showed a markedly higher observed malignancy rate than
+          stable ones.</strong> 50.8% of growing lesions were malignant, versus 15.1% of
+          lesions with no reported growth.
         </p>
         <p>
-          <strong>Melanoma showed a distinctly larger average lesion size than other
-          diagnoses.</strong> Average diameter came out at 14.09mm for MEL, against 10.46mm for
-          SCC and 9.97mm for BCC — dropping sharply for the non-malignant categories (2.62mm and
-          below).
+          <strong>Melanoma had a distinctly larger average lesion size than other
+          diagnoses.</strong> Average diameter was 14.09mm for MEL, against 10.46mm for SCC
+          and 9.97mm for BCC. The non-malignant categories were much smaller, at 2.62mm and
+          below.
         </p>
         <p>
-          <strong>Observed malignancy rate varied considerably by body region.</strong> The nose
-          recorded the highest observed rate at 69.1%, followed by lip (57.1%), neck (54.1%) and
-          ear (53.1%) — all notably higher than the face (36.7%), despite the face having the
-          highest raw case count.
+          <strong>Observed malignancy rate varied considerably by body region.</strong> The
+          nose had the highest observed rate at 69.1%, followed by the lip (57.1%), neck
+          (54.1%) and ear (53.1%). All were notably higher than the face (36.7%), even though
+          the face had the highest raw case count.
         </p>
         <figure>
           <img class="card__image" style="aspect-ratio: 820 / 400;" src="../assets/images/projects/dori-body-region.svg" alt="Bar chart of observed malignancy rate by body region: nose 69.1%, lip 57.1%, neck 54.1%, ear 53.1%, chest 41.9%, face 36.7%" loading="lazy" width="820" height="400" />
@@ -193,38 +195,38 @@ FROM table2;</code></div>
         </figure>
         <p>
           <strong>Lifestyle factors showed a compounding pattern in observed rates.</strong>
-          Patients who both smoked and drank showed an 82.1% observed malignancy rate, against
-          70.6% for smoking alone, 68.2% for drinking alone, and 24.5% for neither. These are
-          observed associations within this dataset, not evidence that the two behaviours cause
-          malignancy together.
+          Patients who both smoked and drank had an 82.1% observed malignancy rate, against
+          70.6% for smoking alone, 68.2% for drinking alone and 24.5% for neither. These are
+          observed associations within this dataset, not evidence that the two behaviours
+          cause malignancy together.
         </p>
         <p>
-          100% of lesions with malignant diagnoses were recorded as biopsied, compared with
+          All lesions with malignant diagnoses (100%) were recorded as biopsied, compared with
           approximately 15% of non-malignant lesions. This indicates that biopsy status was
           strongly associated with malignant diagnosis within the dataset.
         </p>
         <div class="callout">
           <span class="callout__label">Worth investigating</span>
-          Patients with better sanitation access (piped water, sewage systems) showed higher
-          observed malignancy rates than those without (roughly 63% vs 20%) — the opposite of
-          what you'd expect. This counterintuitive association may reflect unmeasured factors
-          such as differences in healthcare access, screening or diagnostic follow-up, but the
-          dataset does not establish the explanation.
+          Patients with better sanitation access (piped water and sewage systems) showed
+          higher observed malignancy rates than those without, at roughly 63% versus 20%.
+          That is the opposite of what I expected going in. This counterintuitive association
+          may reflect unmeasured factors such as differences in healthcare access, screening
+          or diagnostic follow-up, but the dataset does not establish the explanation.
         </div>
         <p>
-          <strong>Counts and rates told different stories in places, and keeping them separate
-          mattered.</strong> The 60–74 age group had the highest number of malignant diagnoses
-          (120 cases), while the 75+ group had the highest observed malignancy rate (43.9%).
-          Counts describe where the greatest volume of malignant cases occurred, while rates
-          show the proportion of each group diagnosed as malignant. Keeping those measures
-          separate prevented a high-volume group from automatically being interpreted as the
-          highest-rate group.
+          <strong>Counts and rates told different stories, and keeping them separate
+          mattered.</strong> The 60–74 age group had the highest number of malignant
+          diagnoses (120 cases), while the 75+ group had the highest observed malignancy rate
+          (43.9%). Counts show where the greatest volume of malignant cases occurred. Rates
+          show the proportion of each group diagnosed as malignant. Keeping the two separate
+          stopped a high-volume group from being read as the highest-rate group.
         </p>
 
         <h2>SQL spotlight</h2>
         <p>
-          The data dictionary called <code>lesion_id</code> unique. This query tested that claim
-          directly rather than trusting it, and surfaced the 1,088-vs-1,007 discrepancy above.
+          The data dictionary called <code>lesion_id</code> unique. This query tested that
+          claim directly instead of trusting it, and it surfaced the 1,088 versus 1,007
+          discrepancy described above.
         </p>
         <div class="code-block"><code>SELECT
     COUNT(*) AS total_lesions,
@@ -232,8 +234,8 @@ FROM table2;</code></div>
 FROM table2;</code></div>
 
         <p>
-          Joining patient and lesion data to analyse malignant diagnoses by age — this is the
-          foundation of every demographic finding in the analysis.
+          This query joins the patient and lesion tables to count malignant diagnoses by age
+          group. It is the foundation of every demographic finding in the analysis.
         </p>
         <div class="code-block"><code>SELECT
     CASE
@@ -254,9 +256,9 @@ ORDER BY malignant_diagnoses DESC;</code></div>
 
         <p>
           Symptoms were stored as five separate boolean columns rather than one categorical
-          field, so <code>GROUP BY</code> alone couldn't rank them against each other.
-          <code>UNION ALL</code> stacks the five counts into a single comparable list — itch and
-          elevation came out as the most commonly reported.
+          field, so <code>GROUP BY</code> alone could not rank them against each other.
+          <code>UNION ALL</code> stacks the five counts into a single comparable list. Itch
+          and elevation came out as the most commonly reported.
         </p>
         <div class="code-block"><code>SELECT 'itch' AS symptom, COUNT(*) AS num_lesions FROM table2 WHERE itch = true
 UNION ALL
@@ -285,9 +287,9 @@ GROUP BY diagnostic
 ORDER BY avg_lesion_diameter DESC;</code></div>
 
         <p>
-          <code>FILTER</code> lets you count a conditional subset and the full group in the same
-          pass, which is what turns a raw count into a rate. This is the query behind the
-          strongest finding in the project: the 70.1% vs 21.9% split by prior history.
+          <code>FILTER</code> lets you count a conditional subset and the full group in the
+          same pass, which is what turns a raw count into a rate. This is the query behind the
+          strongest finding in the project, the 70.1% versus 21.9% split by prior history.
         </p>
         <div class="code-block"><code>SELECT
     t1.skin_cancer_history,
@@ -313,29 +315,29 @@ ORDER BY malignancy_rate_pct DESC;</code></div>
 
         <h2>From analysis to action</h2>
         <ul style="padding-left: 1.25rem; list-style: disc; color: var(--color-slate);">
-          <li>Consider prioritising patients with a documented prior skin cancer history for closer assessment — the strongest observed association in the dataset (70.1% malignancy rate).</li>
-          <li>Lesion growth may warrant closer clinical attention as a signal worth tracking — growing lesions showed over three times the observed malignancy rate of stable ones.</li>
-          <li>Nose, lip, neck and ear lesions may warrant closer assessment regardless of visible size, given their disproportionately high observed rates.</li>
-          <li>Lifestyle history (smoking and drinking) could be incorporated into further screening evaluation, given the compounding pattern observed across lifestyle groups.</li>
-          <li>The sanitation-access association would benefit from further investigation before informing any decision — the current data can't establish what's driving it.</li>
+          <li>Consider prioritising patients with a documented prior skin cancer history for closer assessment. This was the strongest observed association in the dataset (70.1% malignancy rate).</li>
+          <li>Lesion growth may warrant closer clinical attention as a signal worth tracking. Growing lesions had over three times the observed malignancy rate of stable ones.</li>
+          <li>Nose, lip, neck and ear lesions may warrant closer assessment regardless of visible size, given their high observed rates.</li>
+          <li>Lifestyle history (smoking and drinking) could be incorporated into further screening evaluation, given the pattern observed across lifestyle groups.</li>
+          <li>The sanitation-access association would benefit from further investigation before informing any decision, because the current data cannot establish what is driving it.</li>
         </ul>
 
         <h2>What I learned</h2>
         <p>
-          Checking whether <code>lesion_id</code> really was unique — rather than trusting the
-          data dictionary — is the kind of step that's easy to skip under time pressure, but
-          it's exactly the step that catches problems before they quietly distort a join later
-          on. Distinguishing counts from rates mattered more than I expected going in: the same
+          Checking whether <code>lesion_id</code> really was unique, rather than trusting the
+          data dictionary, is a step that is easy to skip under time pressure. It is also the
+          step that catches problems before they quietly distort a join later on.
+          Distinguishing counts from rates mattered more than I expected going in. The same
           dataset can honestly support "60–74 has the most cases" and "75+ has the highest
-          rate," and picking the wrong one changes what you'd recommend.
+          rate", and picking the wrong one changes what you would recommend.
         </p>
         <p>
           The sanitation finding was the most instructive part of the project. Patients with
-          better piped water and sewage access showed higher observed malignancy rates — the
-          opposite of what I'd have guessed going in. It would have been easy to either drop the
-          finding or force an explanation onto it. Instead, I reported it as an association that
-          needs further investigation. Not every unexpected result needs a story attached to it
-          immediately — sometimes the honest answer is "this needs more investigation," and
+          better piped water and sewage access showed higher observed malignancy rates, the
+          opposite of what I would have guessed. It would have been easy to drop the finding
+          or force an explanation onto it. Instead, I reported it as an association that needs
+          further investigation. Not every unexpected result needs a story attached to it
+          straight away. Sometimes the honest answer is "this needs more investigation", and
           being able to say that clearly is part of doing the analysis properly.
         </p>
 
@@ -352,19 +354,19 @@ ORDER BY malignancy_rate_pct DESC;</code></div>
         </div>
 
         <h2 style="margin-top: var(--space-xl);">Limitations</h2>
-        <p>Documented plainly rather than glossed over, because knowing where a model's edges are is part of the analysis.</p>
+        <p>Documented plainly rather than glossed over, because knowing where an analysis stops is part of doing it properly.</p>
         <ul style="padding-left: 1.25rem; list-style: disc; color: var(--color-slate);">
           <li>All findings are observational associations, not causal relationships.</li>
-          <li>The sanitation-access finding may reflect an unmeasured factor, such as healthcare access or screening frequency, rather than a direct risk factor — this dataset does not establish the explanation.</li>
-          <li>The dataset represents a single point-in-time snapshot; there is no longitudinal tracking of individual patients over time.</li>
-          <li><code>lesion_id</code> was found not to be globally unique (1,088 records vs 1,007 distinct values), despite being described as unique in the data documentation; it was not used as a join or filter key in this analysis.</li>
+          <li>The sanitation-access finding may reflect an unmeasured factor, such as healthcare access or screening frequency, rather than a direct risk factor. This dataset does not establish the explanation.</li>
+          <li>The dataset is a single point-in-time snapshot, so there is no longitudinal tracking of individual patients over time.</li>
+          <li><code>lesion_id</code> was found not to be globally unique (1,088 records versus 1,007 distinct values), despite being described as unique in the data documentation. It was not used as a join or filter key in this analysis.</li>
         </ul>
 
         <p style="margin-top: var(--space-lg);">
           <a href="https://github.com/marianohwerhi/dori-skin-cancer-sql-analysis">View the SQL on GitHub →</a>
         </p>
         <p style="margin-top: var(--space-sm);">
-          <a href="https://github.com/marianohwerhi/dori-skin-cancer-sql-analysis/blob/main/report/DORI_Skin_Cancer_Analysis.pdf">View the executive report (PDF) →</a>
+          <a href="../assets/documents/DORI_Skin_Cancer_Analysis.pdf">View the executive report (PDF) →</a>
         </p>
       </div>
     </article>
