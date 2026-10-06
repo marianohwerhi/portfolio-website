@@ -164,6 +164,16 @@ a.card:hover .card__cta {
   border-bottom: 1px solid var(--color-border);
 }
 
+/* Wider columns for lists whose values are long (email addresses, URLs).
+   Two columns at the narrow content width instead of four cramped ones. */
+.meta-list--wide {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.meta-list dd {
+  overflow-wrap: anywhere;
+}
+
 .meta-list dt {
   font-size: 0.75rem;
   font-weight: var(--font-weight-medium);
