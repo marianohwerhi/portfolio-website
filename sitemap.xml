@@ -1,37 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://marianohwerhi.github.io/</loc>
+    <loc>https://marianohwerhi.github.io/portfolio-website/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://marianohwerhi.github.io/work.html</loc>
+    <loc>https://marianohwerhi.github.io/portfolio-website/work.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://marianohwerhi.github.io/case-studies/hiv-treatment-effectiveness.html</loc>
+    <loc>https://marianohwerhi.github.io/portfolio-website/case-studies/hiv-treatment-effectiveness.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://marianohwerhi.github.io/case-studies/hospital-patient-dashboard.html</loc>
+    <loc>https://marianohwerhi.github.io/portfolio-website/case-studies/dori-skin-cancer-risk-intelligence.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://marianohwerhi.github.io/portfolio-website/case-studies/vitallink-telehealth-sla-monitoring.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://marianohwerhi.github.io/portfolio-website/case-studies/hospital-patient-dashboard.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://marianohwerhi.github.io/about.html</loc>
+    <loc>https://marianohwerhi.github.io/portfolio-website/about.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://marianohwerhi.github.io/insights.html</loc>
+    <loc>https://marianohwerhi.github.io/portfolio-website/insights.html</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://marianohwerhi.github.io/contact.html</loc>
+    <loc>https://marianohwerhi.github.io/portfolio-website/contact.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
